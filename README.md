@@ -2,7 +2,7 @@
 
 Cloud Computing — Universidad Autónoma de Occidente. Profesor: Heberth Martinez.
 
-**Integrantes:** _(nombres)_
+**Integrantes:** _Jose Emanuel Morcillo - Jose David Buitrago Aponte_
 
 Montamos un clúster Hadoop con Docker Compose, corrimos 5 jobs MapReduce y probamos qué pasa cuando fallan los nodos. Partimos del laboratorio de ejemplo [CloudComputingUAO/HDFS](https://github.com/CloudComputingUAO/HDFS), que solo tenía HDFS, y le agregamos YARN para poder ejecutar MapReduce.
 
