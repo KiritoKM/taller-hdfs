@@ -1,0 +1,115 @@
+name: taller-hadoop
+
+x-hadoop: &hadoop
+  build:
+    context: .
+    dockerfile: Dockerfile
+  image: taller-hadoop:3.4.1
+  networks:
+    - hadoop-net
+
+x-after-namenode: &after-namenode
+  depends_on:
+    namenode:
+      condition: service_healthy
+
+services:
+  # ---------------- HDFS ----------------
+  namenode:
+    <<: *hadoop
+    hostname: namenode
+    command: ["namenode"]
+    ports:
+      - "9870:9870"   # UI HDFS
+    volumes:
+      - namenode-data:/data/name
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:9870/ >/dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+
+  datanode1:
+    <<: [*hadoop, *after-namenode]
+    hostname: datanode1
+    command: ["datanode"]
+    volumes:
+      - datanode1-data:/data/data
+
+  datanode2:
+    <<: [*hadoop, *after-namenode]
+    hostname: datanode2
+    command: ["datanode"]
+    volumes:
+      - datanode2-data:/data/data
+
+  datanode3:
+    <<: [*hadoop, *after-namenode]
+    hostname: datanode3
+    command: ["datanode"]
+    volumes:
+      - datanode3-data:/data/data
+
+  # ---------------- YARN ----------------
+  resourcemanager:
+    <<: [*hadoop, *after-namenode]
+    hostname: resourcemanager
+    command: ["resourcemanager"]
+    ports:
+      - "8088:8088"   # UI YARN
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://resourcemanager:8088/ws/v1/cluster/info >/dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+  nodemanager1:
+    <<: *hadoop
+    hostname: nodemanager1
+    command: ["nodemanager"]
+    depends_on:
+      resourcemanager:
+        condition: service_healthy
+    ports:
+      - "8042:8042"   # UI NodeManager 1
+
+  nodemanager2:
+    <<: *hadoop
+    hostname: nodemanager2
+    command: ["nodemanager"]
+    depends_on:
+      resourcemanager:
+        condition: service_healthy
+    ports:
+      - "8043:8042"   # UI NodeManager 2
+
+  historyserver:
+    <<: [*hadoop, *after-namenode]
+    hostname: historyserver
+    command: ["historyserver"]
+    restart: on-failure
+    ports:
+      - "19888:19888" # UI JobHistory
+
+  # ---------------- Cliente ----------------
+  client:
+    <<: [*hadoop, *after-namenode]
+    hostname: hadoop-client
+    command: ["client"]
+    working_dir: /workspace
+    volumes:
+      - ./datasets:/workspace/datasets:ro
+      - ./jobs:/workspace/jobs:ro
+      - ./scripts:/workspace/scripts:ro
+      - ./evidencias:/workspace/evidencias
+
+networks:
+  hadoop-net:
+
+volumes:
+  namenode-data:
+  datanode1-data:
+  datanode2-data:
+  datanode3-data:

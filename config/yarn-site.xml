@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<configuration>
+  <property>
+    <name>yarn.resourcemanager.hostname</name>
+    <value>resourcemanager</value>
+  </property>
+  <!-- Servicio auxiliar que permite a los reducers descargar la salida de los mappers (shuffle). -->
+  <property>
+    <name>yarn.nodemanager.aux-services</name>
+    <value>mapreduce_shuffle</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
+    <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.env-whitelist</name>
+    <value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_HOME,PATH,LANG,TZ,HADOOP_MAPRED_HOME</value>
+  </property>
+
+  <!-- Recursos que cada NodeManager ofrece al clúster. -->
+  <property>
+    <name>yarn.nodemanager.resource.memory-mb</name>
+    <value>4096</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.resource.cpu-vcores</name>
+    <value>4</value>
+  </property>
+  <property>
+    <name>yarn.scheduler.minimum-allocation-mb</name>
+    <value>256</value>
+  </property>
+  <property>
+    <name>yarn.scheduler.maximum-allocation-mb</name>
+    <value>4096</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.vmem-check-enabled</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.local-dirs</name>
+    <value>/data/yarn/local</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.log-dirs</name>
+    <value>/data/yarn/logs</value>
+  </property>
+
+  <!-- Agregación de logs: al terminar un job sus logs se copian a HDFS (yarn logs -applicationId ...). -->
+  <property>
+    <name>yarn.log-aggregation-enable</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.remote-app-log-dir</name>
+    <value>/app-logs</value>
+  </property>
+  <property>
+    <name>yarn.log.server.url</name>
+    <value>http://historyserver:19888/jobhistory/logs</value>
+  </property>
+
+  <!--
+    Un NodeManager se marca LOST si no envía heartbeat durante 30 s (por defecto 10 min).
+    Así el experimento de "detener un NodeManager" se observa en poco tiempo.
+  -->
+  <property>
+    <name>yarn.nm.liveness-monitor.expiry-interval-ms</name>
+    <value>30000</value>
+  </property>
+  <property>
+    <name>yarn.resourcemanager.am.max-attempts</name>
+    <value>2</value>
+  </property>
+</configuration>

@@ -1,0 +1,3 @@
+# Dataset regenerable con scripts/00_preparar_datasets.sh (semilla fija, ~24 MB)
+datasets/access.log
+
