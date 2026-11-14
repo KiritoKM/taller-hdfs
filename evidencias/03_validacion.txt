@@ -1,0 +1,28 @@
+
+[OK] WordCount: 39755 claves esperadas, 39755 en HDFS
+   Top 8: que=19546, de=18133, y=15976, la=10329, a=9627, el=8009, en=7941, no=5622
+   Total de palabras: 389,656
+
+[OK] Promedio por tienda: 5 claves esperadas, 5 en HDFS
+   BARRANQUILLA  n=10,360  promedio=$  751,565.30
+   BOGOTA        n=10,189  promedio=$  746,142.02
+   CALI          n=10,279  promedio=$  755,070.96
+   CARTAGENA     n=10,040  promedio=$  758,321.67
+   MEDELLIN      n= 9,967  promedio=$  759,729.10
+
+[OK] Horas pico: 24 claves esperadas, 24 en HDFS
+   Horas pico: 20:00 (19,580 peticiones), 19:00 (17,997 peticiones), 10:00 (16,076 peticiones)
+
+[OK] Top 10 URLs: 10 claves esperadas, 10 en HDFS
+    1. /                          37,610
+    2. /productos                 28,050
+    3. /productos/celulares       17,625
+    4. /productos/portatiles      15,183
+    5. /static/app.js             14,108
+    6. /static/styles.css         13,900
+    7. /carrito                   12,672
+    8. /login                     11,441
+    9. /api/v1/precios            10,120
+   10. /blog/ofertas-noviembre     8,865
+
+RESULTADO: todos los jobs coinciden con el cálculo local

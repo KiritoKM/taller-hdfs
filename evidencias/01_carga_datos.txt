@@ -1,0 +1,49 @@
+== Estado del clúster ==
+DFS Used%: 0.00%
+Live datanodes (3):
+Name: 172.21.0.3:9866 (taller-hadoop-datanode1-1.taller-hadoop_hadoop-net)
+DFS Used%: 0.00%
+Name: 172.21.0.4:9866 (taller-hadoop-datanode2-1.taller-hadoop_hadoop-net)
+DFS Used%: 0.00%
+Name: 172.21.0.5:9866 (taller-hadoop-datanode3-1.taller-hadoop_hadoop-net)
+DFS Used%: 0.00%
+2026-11-10 23:35:48,921 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at resourcemanager/172.21.0.6:8032
+Total Nodes:2
+         Node-Id	     Node-State	Node-Http-Address	Number-of-Running-Containers
+nodemanager1:45449	        RUNNING	nodemanager1:8042	                           0
+nodemanager2:44885	        RUNNING	nodemanager2:8042	                           0
+
+== Estructura de entrada en HDFS ==
+drwxr-xr-x   - root supergroup          0 2026-11-10 23:35 /taller/input/libros
+-rw-r--r--   2 root supergroup      2.1 M 2026-11-10 23:35 /taller/input/libros/quijote.txt
+drwxr-xr-x   - root supergroup          0 2026-11-10 23:36 /taller/input/logs
+-rw-r--r--   2 root supergroup     23.7 M 2026-11-10 23:36 /taller/input/logs/access.log
+drwxr-xr-x   - root supergroup          0 2026-11-10 23:36 /taller/input/transacciones
+-rw-r--r--   2 root supergroup      4.6 M 2026-11-10 23:36 /taller/input/transacciones/transactions.csv
+
+2.1 M   4.2 M   /taller/input/libros
+23.7 M  47.4 M  /taller/input/logs
+4.6 M   9.2 M   /taller/input/transacciones
+
+== Bloques y réplicas ==
+--- /taller/input/libros/quijote.txt
+Connecting to namenode via http://namenode:9870/fsck?ugi=root&files=1&blocks=1&locations=1&path=%2Ftaller%2Finput%2Flibros%2Fquijote.txt
+/taller/input/libros/quijote.txt 2225777 bytes, replicated: replication=2, 3 block(s):  OK
+Status: HEALTHY
+ Total blocks (validated):	3 (avg. block size 741925 B)
+ Under-replicated blocks:	0 (0.0 %)
+ Average block replication:	2.0
+--- /taller/input/transacciones/transactions.csv
+Connecting to namenode via http://namenode:9870/fsck?ugi=root&files=1&blocks=1&locations=1&path=%2Ftaller%2Finput%2Ftransacciones%2Ftransactions.csv
+/taller/input/transacciones/transactions.csv 4833623 bytes, replicated: replication=2, 5 block(s):  OK
+Status: HEALTHY
+ Total blocks (validated):	5 (avg. block size 966724 B)
+ Under-replicated blocks:	0 (0.0 %)
+ Average block replication:	2.0
+--- /taller/input/logs/access.log
+Connecting to namenode via http://namenode:9870/fsck?ugi=root&files=1&blocks=1&locations=1&path=%2Ftaller%2Finput%2Flogs%2Faccess.log
+/taller/input/logs/access.log 24833587 bytes, replicated: replication=2, 24 block(s):  OK
+Status: HEALTHY
+ Total blocks (validated):	24 (avg. block size 1034732 B)
+ Under-replicated blocks:	0 (0.0 %)
+ Average block replication:	2.0

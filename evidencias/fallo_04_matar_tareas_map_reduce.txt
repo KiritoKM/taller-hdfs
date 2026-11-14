@@ -1,0 +1,22 @@
+[18:59:25] Job fallo-tareas-map-reduce lanzado como application_1794353665434_0010 (cada map tarda >= 25s)
+[18:59:39] Fase MAP en curso: state=RUNNING  mapsCompleted=0  mapsTotal=24  mapsRunning=7  reducesCompleted=0  reducesRunning=0  successfulMapAttempts=0  failedMapAttempts=0  killedMapAttempts=0  successfulReduceAttempts=0  failedReduceAttempts=0  killedReduceAttempts=0
+[18:59:39] === MATANDO los mappers Python en ejecución ===
+[18:59:42]   nodemanager1: 1 proceso(s) que coinciden con 'python3 mapper.py' terminados con SIGKILL
+[18:59:45]   nodemanager2: 0 proceso(s) que coinciden con 'python3 mapper.py' terminados con SIGKILL
+[18:59:51] Después de matar mappers: state=RUNNING  mapsCompleted=0  mapsTotal=24  mapsRunning=13  reducesCompleted=0  reducesRunning=0  successfulMapAttempts=0  failedMapAttempts=2  killedMapAttempts=0  successfulReduceAttempts=0  failedReduceAttempts=0  killedReduceAttempts=0
+[19:00:17] Fase REDUCE (shuffle) en curso: state=RUNNING  mapsCompleted=3  mapsTotal=24  mapsRunning=14  reducesCompleted=0  reducesRunning=1  successfulMapAttempts=3  failedMapAttempts=2  killedMapAttempts=0  successfulReduceAttempts=0  failedReduceAttempts=0  killedReduceAttempts=0
+[19:00:17] === MATANDO la JVM del reducer (YarnChild ..._r_...) ===
+[19:00:18]   nodemanager1: 2 proceso(s) que coinciden con 'YarnChild.*_r_0' terminados con SIGKILL
+[19:00:20]   nodemanager2: 0 proceso(s) que coinciden con 'YarnChild.*_r_0' terminados con SIGKILL
+[19:00:26] Después de matar el reducer: state=RUNNING  mapsCompleted=14  mapsTotal=24  mapsRunning=10  reducesCompleted=0  reducesRunning=1  successfulMapAttempts=14  failedMapAttempts=2  killedMapAttempts=1  successfulReduceAttempts=0  failedReduceAttempts=1  killedReduceAttempts=0
+[19:00:29] app: RUNNING UNDEFINED nodemanager2 32% | state=RUNNING  mapsCompleted=15  mapsTotal=24  mapsRunning=9  reducesCompleted=0  reducesRunning=1  successfulMapAttempts=15  failedMapAttempts=2  killedMapAttempts=1  successfulReduceAttempts=0  failedReduceAttempts=1  killedReduceAttempts=0
+[19:00:38] app: RUNNING UNDEFINED nodemanager2 34% | state=RUNNING  mapsCompleted=15  mapsTotal=24  mapsRunning=9  reducesCompleted=0  reducesRunning=1  successfulMapAttempts=15  failedMapAttempts=2  killedMapAttempts=1  successfulReduceAttempts=0  failedReduceAttempts=1  killedReduceAttempts=0
+[19:00:47] app: RUNNING UNDEFINED nodemanager2 48% | state=RUNNING  mapsCompleted=17  mapsTotal=24  mapsRunning=7  reducesCompleted=0  reducesRunning=1  successfulMapAttempts=17  failedMapAttempts=2  killedMapAttempts=1  successfulReduceAttempts=0  failedReduceAttempts=1  killedReduceAttempts=0
+[19:00:56] app: RUNNING UNDEFINED nodemanager2 55% | state=RUNNING  mapsCompleted=20  mapsTotal=24  mapsRunning=4  reducesCompleted=0  reducesRunning=1  successfulMapAttempts=20  failedMapAttempts=2  killedMapAttempts=2  successfulReduceAttempts=0  failedReduceAttempts=1  killedReduceAttempts=0
+[19:01:06] app: FINISHED SUCCEEDED nodemanager2 100% | state=SUCCEEDED  mapsCompleted=24  mapsTotal=24  reducesCompleted=1  successfulMapAttempts=24  failedMapAttempts=2  killedMapAttempts=1  successfulReduceAttempts=1  failedReduceAttempts=1  killedReduceAttempts=0
+[19:01:06] === Intentos fallidos registrados por el JobHistory ===
+task_1794353665434_0010_m_000000 MAP -> _0:FAILED@nodemanager1, _1:SUCCEEDED@nodemanager1
+task_1794353665434_0010_r_000000 REDUCE -> _0:FAILED@nodemanager1, _1:SUCCEEDED@nodemanager2
+task_1794353665434_0010_m_000001 MAP -> _0:FAILED@nodemanager1, _1:SUCCEEDED@nodemanager2
+task_1794353665434_0010_m_000019 MAP -> _0:SUCCEEDED@nodemanager2, _1:KILLED@nodemanager1
+[19:01:10] VALIDACIÓN: la salida de fallo-tareas-map-reduce es IDÉNTICA a la del job sin fallos (horas_pico)

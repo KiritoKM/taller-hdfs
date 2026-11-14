@@ -1,0 +1,24 @@
+[18:46:53] Generando un archivo de 60 MiB en el cliente (60 bloques de 1 MiB)...
+d6e82b40186ea179530a0a3dd081f9c2  /tmp/grande.bin
+[18:46:59] Iniciando hdfs dfs -put (~3 MiB/s) en segundo plano...
+[18:47:09] Bloques escritos antes del fallo: 21
+[18:47:09] === REINICIANDO datanode2 durante la escritura ===
+ Container taller-hadoop-datanode2-1 Restarting 
+ Container taller-hadoop-datanode2-1 Started 
+[18:47:22] hdfs dfs -put terminó con código 0
+[18:47:22] Mensajes del cliente HDFS durante el fallo (recuperación del pipeline):
+23:47:11,028 WARN hdfs.DataStreamer: Exception in createBlockOutputStream blk_1073742225_1401
+23:47:11,031 WARN hdfs.DataStreamer: Error Recovery for BP-2053535640-172.21.0.2-1794353431409:blk_1073742225_1401 in pipeline [DatanodeInfoWithStorage[172.21.0.4:9866,DS-7c2acffd-c463-4886-9d68-c772b
+23:47:11,031 WARN hdfs.DataStreamer: Abandoning BP-2053535640-172.21.0.2-1794353431409:blk_1073742225_1401
+23:47:11,046 WARN hdfs.DataStreamer: Excluding datanode DatanodeInfoWithStorage[172.21.0.4:9866,DS-7c2acffd-c463-4886-9d68-c772be8fa3b1,DISK]
+[18:47:23] Integridad: MD5 local vs MD5 del archivo leído desde HDFS
+d6e82b40186ea179530a0a3dd081f9c2
+d6e82b40186ea179530a0a3dd081f9c2
+Status: HEALTHY
+ Number of data-nodes:	3
+ Total blocks (validated):	60 (avg. block size 1048576 B)
+ Under-replicated blocks:	0 (0.0 %)
+ Mis-replicated blocks:		0 (0.0 %)
+ Average block replication:	2.0
+ Missing blocks:		0
+ Corrupt blocks:		0

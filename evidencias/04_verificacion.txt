@@ -1,0 +1,119 @@
+== Aplicaciones en YARN (todos los estados) ==
+Total number of applications (application-types: [], states: [NEW, NEW_SAVING, SUBMITTED, ACCEPTED, RUNNING, FINISHED, FAILED, KILLED] and tags: []):10
+                Application-Id	    Application-Name	    Application-Type	      User	     Queue	             State	       Final-State	       Progress	                       Tracking-URL
+application_1794353665434_0009	fallo-tareas-map-reduce	           MAPREDUCE	      root	root.default	          FINISHED	         SUCCEEDED	           100%	http://historyserver:19888/jobhistory/job/job_1794353665434_0009
+application_1794353665434_0008	fallo-tareas-map-reduce	           MAPREDUCE	      root	root.default	          FINISHED	         SUCCEEDED	           100%	http://historyserver:19888/jobhistory/job/job_1794353665434_0008
+application_1794353665434_0010	fallo-tareas-map-reduce	           MAPREDUCE	      root	root.default	          FINISHED	         SUCCEEDED	           100%	http://historyserver:19888/jobhistory/job/job_1794353665434_0010
+application_1794353665434_0005	   falla-intencional	           MAPREDUCE	      root	root.default	          FINISHED	            FAILED	           100%	http://historyserver:19888/jobhistory/job/job_1794353665434_0005
+application_1794353665434_0004	          top10-urls	           MAPREDUCE	      root	root.default	          FINISHED	         SUCCEEDED	           100%	http://historyserver:19888/jobhistory/job/job_1794353665434_0004
+application_1794353665434_0007	fallo-nodemanager-am	           MAPREDUCE	      root	root.default	          FINISHED	         SUCCEEDED	           100%	http://historyserver:19888/jobhistory/job/job_1794353665434_0007
+application_1794353665434_0006	fallo-nodemanager-worker	           MAPREDUCE	      root	root.default	          FINISHED	         SUCCEEDED	           100%	http://historyserver:19888/jobhistory/job/job_1794353665434_0006
+application_1794353665434_0001	          word count	           MAPREDUCE	      root	root.default	          FINISHED	         SUCCEEDED	           100%	http://historyserver:19888/jobhistory/job/job_1794353665434_0001
+application_1794353665434_0003	horas-pico-access-log	           MAPREDUCE	      root	root.default	          FINISHED	         SUCCEEDED	           100%	http://historyserver:19888/jobhistory/job/job_1794353665434_0003
+application_1794353665434_0002	promedio-ventas-por-tienda	           MAPREDUCE	      root	root.default	          FINISHED	         SUCCEEDED	           100%	http://historyserver:19888/jobhistory/job/job_1794353665434_0002
+
+== Estado y contadores de cada job (REST de ResourceManager y JobHistory) ==
+Aplicaciones (ResourceManager):
+  application_1794353665434_0001  word count                   state=FINISHED  final=SUCCEEDED    22s  nodo-AM=nodemanager1:8042
+  application_1794353665434_0002  promedio-ventas-por-tienda   state=FINISHED  final=SUCCEEDED    22s  nodo-AM=nodemanager2:8042
+  application_1794353665434_0003  horas-pico-access-log        state=FINISHED  final=SUCCEEDED    55s  nodo-AM=nodemanager2:8042
+  application_1794353665434_0004  top10-urls                   state=FINISHED  final=SUCCEEDED    48s  nodo-AM=nodemanager2:8042
+  application_1794353665434_0005  falla-intencional            state=FINISHED  final=FAILED       34s  nodo-AM=nodemanager1:8042
+  application_1794353665434_0006  fallo-nodemanager-worker     state=FINISHED  final=SUCCEEDED   134s  nodo-AM=nodemanager2:8042
+  application_1794353665434_0007  fallo-nodemanager-am         state=FINISHED  final=SUCCEEDED   183s  nodo-AM=nodemanager2:8042
+  application_1794353665434_0008  fallo-tareas-map-reduce      state=FINISHED  final=SUCCEEDED   101s  nodo-AM=nodemanager1:8042
+  application_1794353665434_0009  fallo-tareas-map-reduce      state=FINISHED  final=SUCCEEDED    88s  nodo-AM=nodemanager2:8042
+  application_1794353665434_0010  fallo-tareas-map-reduce      state=FINISHED  final=SUCCEEDED    95s  nodo-AM=nodemanager2:8042
+
+Jobs MapReduce (JobHistory Server):
+  job_1794353665434_0001  word count                   SUCCEEDED maps 3/3  reduces 1/1  intentos map: ok=3 failed=0 killed=0
+  job_1794353665434_0002  promedio-ventas-por-tienda   SUCCEEDED maps 5/5  reduces 1/1  intentos map: ok=5 failed=0 killed=0
+  job_1794353665434_0003  horas-pico-access-log        SUCCEEDED maps 24/24  reduces 1/1  intentos map: ok=24 failed=0 killed=0
+  job_1794353665434_0004  top10-urls                   SUCCEEDED maps 24/24  reduces 1/1  intentos map: ok=24 failed=0 killed=0
+  job_1794353665434_0005  falla-intencional            FAILED    maps 0/0  reduces 0/0  intentos map: ok=0 failed=16 killed=1
+  job_1794353665434_0006  fallo-nodemanager-worker     SUCCEEDED maps 24/24  reduces 1/1  intentos map: ok=24 failed=0 killed=10
+  job_1794353665434_0007  fallo-nodemanager-am         SUCCEEDED maps 24/24  reduces 1/1  intentos map: ok=24 failed=0 killed=1
+  job_1794353665434_0008  fallo-tareas-map-reduce      SUCCEEDED maps 24/24  reduces 1/1  intentos map: ok=24 failed=4 killed=2
+  job_1794353665434_0009  fallo-tareas-map-reduce      SUCCEEDED maps 24/24  reduces 1/1  intentos map: ok=24 failed=0 killed=2
+  job_1794353665434_0010  fallo-tareas-map-reduce      SUCCEEDED maps 24/24  reduces 1/1  intentos map: ok=24 failed=2 killed=1
+
+== Logs agregados del job FAILED (application_1794353665434_0005): causa del error ==
+     96 PipeMapRed.waitOutputThreads(): subprocess failed with code 1
+     16 RuntimeError: Falla intencional del taller: registro corrupto simulado
+(cada línea es un mensaje repetido N veces: un map falló en todos sus intentos -> job FAILED)
+
+== Salidas en HDFS ==
+Found 2 items
+-rw-r--r--   2 root supergroup          0 2026-11-10 23:53 /taller/output/fallo-nodemanager-am/_SUCCESS
+-rw-r--r--   2 root supergroup        196 2026-11-10 23:53 /taller/output/fallo-nodemanager-am/part-00000
+Found 2 items
+-rw-r--r--   2 root supergroup          0 2026-11-10 23:50 /taller/output/fallo-nodemanager-worker/_SUCCESS
+-rw-r--r--   2 root supergroup        196 2026-11-10 23:50 /taller/output/fallo-nodemanager-worker/part-00000
+Found 2 items
+-rw-r--r--   2 root supergroup          0 2026-11-11 00:00 /taller/output/fallo-tareas-map-reduce/_SUCCESS
+-rw-r--r--   2 root supergroup        196 2026-11-11 00:00 /taller/output/fallo-tareas-map-reduce/part-00000
+Found 2 items
+-rw-r--r--   2 root supergroup          0 2026-11-10 23:38 /taller/output/horas_pico/_SUCCESS
+-rw-r--r--   2 root supergroup        196 2026-11-10 23:38 /taller/output/horas_pico/part-00000
+Found 2 items
+-rw-r--r--   2 root supergroup          0 2026-11-10 23:37 /taller/output/promedio_tienda/_SUCCESS
+-rw-r--r--   2 root supergroup        248 2026-11-10 23:37 /taller/output/promedio_tienda/part-00000
+Found 2 items
+-rw-r--r--   2 root supergroup          0 2026-11-10 23:39 /taller/output/top_urls/_SUCCESS
+-rw-r--r--   2 root supergroup        226 2026-11-10 23:39 /taller/output/top_urls/part-00000
+Found 2 items
+-rw-r--r--   2 root supergroup          0 2026-11-10 23:36 /taller/output/wordcount/_SUCCESS
+-rw-r--r--   2 root supergroup     446606 2026-11-10 23:36 /taller/output/wordcount/part-r-00000
+--- hdfs dfs -cat /taller/output/promedio_tienda/part-00000
+BARRANQUILLA	10360	7786216514	751565.30	10013	1499743
+BOGOTA	10189	7602441037	746142.02	10066	1499809
+CALI	10279	7761374434	755070.96	10136	1499978
+CARTAGENA	10040	7613549543	758321.67	10030	1499987
+MEDELLIN	9967	7572219964	759729.10	10108	1499887
+--- hdfs dfs -cat /taller/output/horas_pico/part-00000
+00	891
+01	927
+02	899
+03	900
+04	863
+05	1846
+06	3645
+07	6353
+08	9046
+09	12468
+10	16076
+11	15341
+12	10798
+13	8905
+14	8135
+15	8161
+16	8872
+17	10871
+18	13443
+19	17997
+20	19580
+21	14254
+22	7080
+23	2649
+--- hdfs dfs -cat /taller/output/top_urls/part-00000
+1	/	37610
+2	/productos	28050
+3	/productos/celulares	17625
+4	/productos/portatiles	15183
+5	/static/app.js	14108
+6	/static/styles.css	13900
+7	/carrito	12672
+8	/login	11441
+9	/api/v1/precios	10120
+10	/blog/ofertas-noviembre	8865
+--- WordCount (10 palabras más frecuentes)
+que	19546
+de	18133
+y	15976
+la	10329
+a	9627
+el	8009
+en	7941
+no	5622
+se	4751
+los	4701

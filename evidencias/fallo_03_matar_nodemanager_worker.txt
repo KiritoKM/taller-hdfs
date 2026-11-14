@@ -1,0 +1,49 @@
+[18:47:43] === Nodos YARN antes del fallo ===
+Total Nodes:2
+         Node-Id	     Node-State	Node-Http-Address	Number-of-Running-Containers
+nodemanager1:45449	        RUNNING	nodemanager1:8042	                           0
+nodemanager2:44885	        RUNNING	nodemanager2:8042	                           0
+[18:47:53] Job fallo-nodemanager-worker lanzado como application_1794353665434_0006 (cada map tarda >= 20s)
+[18:48:08] ApplicationMaster en: nodemanager2
+[18:48:09] Tareas: state=RUNNING  mapsCompleted=0  mapsTotal=24  mapsRunning=8  reducesCompleted=0  reducesRunning=0  successfulMapAttempts=0  failedMapAttempts=0  killedMapAttempts=0  successfulReduceAttempts=0  failedReduceAttempts=0  killedReduceAttempts=0
+Total Nodes:2
+         Node-Id	     Node-State	Node-Http-Address	Number-of-Running-Containers
+nodemanager1:45449	        RUNNING	nodemanager1:8042	                           8
+nodemanager2:44885	        RUNNING	nodemanager2:8042	                           4
+[18:48:14] === MATANDO nodemanager1 (SIGKILL) con el job en RUNNING ===
+ Container taller-hadoop-nodemanager1-1 Killing 
+ Container taller-hadoop-nodemanager1-1 Killed 
+[18:48:49] El ResourceManager marcó el nodo como LOST tras 33 s
+Total Nodes:2
+         Node-Id	     Node-State	Node-Http-Address	Number-of-Running-Containers
+nodemanager2:44885	        RUNNING	nodemanager2:8042	                           8
+nodemanager1:45449	           LOST	nodemanager1:8042	                           0
+[18:48:54] app: RUNNING UNDEFINED nodemanager2 18% | state=RUNNING  mapsCompleted=7  mapsTotal=24  mapsRunning=14  reducesCompleted=0  reducesRunning=1  successfulMapAttempts=7  failedMapAttempts=0  killedMapAttempts=8  successfulReduceAttempts=0  failedReduceAttempts=0  killedReduceAttempts=0
+[18:49:03] app: RUNNING UNDEFINED nodemanager2 23% | state=RUNNING  mapsCompleted=7  mapsTotal=24  mapsRunning=14  reducesCompleted=0  reducesRunning=1  successfulMapAttempts=7  failedMapAttempts=0  killedMapAttempts=8  successfulReduceAttempts=0  failedReduceAttempts=0  killedReduceAttempts=0
+[18:49:13] app: RUNNING UNDEFINED nodemanager2 28% | state=RUNNING  mapsCompleted=11  mapsTotal=24  mapsRunning=10  reducesCompleted=0  reducesRunning=1  successfulMapAttempts=11  failedMapAttempts=0  killedMapAttempts=8  successfulReduceAttempts=0  failedReduceAttempts=0  killedReduceAttempts=0
+[18:49:22] app: RUNNING UNDEFINED nodemanager2 36% | state=RUNNING  mapsCompleted=13  mapsTotal=24  mapsRunning=8  reducesCompleted=0  reducesRunning=1  successfulMapAttempts=13  failedMapAttempts=0  killedMapAttempts=8  successfulReduceAttempts=0  failedReduceAttempts=0  killedReduceAttempts=0
+[18:49:31] app: RUNNING UNDEFINED nodemanager2 40% | state=RUNNING  mapsCompleted=14  mapsTotal=24  mapsRunning=7  reducesCompleted=0  reducesRunning=1  successfulMapAttempts=14  failedMapAttempts=0  killedMapAttempts=8  successfulReduceAttempts=0  failedReduceAttempts=0  killedReduceAttempts=0
+[18:49:41] app: RUNNING UNDEFINED nodemanager2 47% | state=RUNNING  mapsCompleted=18  mapsTotal=24  mapsRunning=5  reducesCompleted=0  reducesRunning=1  successfulMapAttempts=18  failedMapAttempts=0  killedMapAttempts=8  successfulReduceAttempts=0  failedReduceAttempts=0  killedReduceAttempts=0
+[18:49:51] app: RUNNING UNDEFINED nodemanager2 53% | state=RUNNING  mapsCompleted=19  mapsTotal=24  mapsRunning=5  reducesCompleted=0  reducesRunning=1  successfulMapAttempts=19  failedMapAttempts=0  killedMapAttempts=8  successfulReduceAttempts=0  failedReduceAttempts=0  killedReduceAttempts=0
+[18:50:00] app: RUNNING UNDEFINED nodemanager2 58% | state=RUNNING  mapsCompleted=21  mapsTotal=24  mapsRunning=3  reducesCompleted=0  reducesRunning=1  successfulMapAttempts=21  failedMapAttempts=0  killedMapAttempts=9  successfulReduceAttempts=0  failedReduceAttempts=0  killedReduceAttempts=0
+[18:50:09] app: FINISHED SUCCEEDED nodemanager2 100% | state=SUCCEEDED  mapsCompleted=24  mapsTotal=24  reducesCompleted=1  successfulMapAttempts=24  failedMapAttempts=0  killedMapAttempts=10  successfulReduceAttempts=1  failedReduceAttempts=0  killedReduceAttempts=0
+[18:50:10] === Resultado ===
+	State : FINISHED
+	Final-State : SUCCEEDED
+	AM Host : nodemanager2
+	Diagnostics : 
+[18:50:11] Intentos del ApplicationMaster:
+appattempt_1794353665434_0006_000001	            FINISHED	container_1794353665434_0006_01_000001	http://resourcemanager:8088/proxy/application_1794353665434_0006/
+[18:50:17] VALIDACIÓN: la salida de fallo-nodemanager-worker es IDÉNTICA a la del job sin fallos (horas_pico)
+[18:50:17] === Recuperando nodemanager1 ===
+ Container taller-hadoop-namenode-1 Waiting 
+ Container taller-hadoop-namenode-1 Healthy 
+ Container taller-hadoop-resourcemanager-1 Waiting 
+ Container taller-hadoop-resourcemanager-1 Healthy 
+ Container taller-hadoop-nodemanager1-1 Starting 
+ Container taller-hadoop-nodemanager1-1 Started 
+Total Nodes:3
+         Node-Id	     Node-State	Node-Http-Address	Number-of-Running-Containers
+nodemanager1:39573	        RUNNING	nodemanager1:8042	                           0
+nodemanager2:44885	        RUNNING	nodemanager2:8042	                           0
+nodemanager1:45449	           LOST	nodemanager1:8042	                           0

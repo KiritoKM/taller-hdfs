@@ -1,0 +1,84 @@
+[18:42:18] === ESTADO INICIAL ===
+	Under replicated blocks: 0
+	Missing blocks: 0
+	Missing blocks (with replication factor 1): 0
+Live datanodes (3):
+Name: 172.21.0.3:9866 (taller-hadoop-datanode1-1.taller-hadoop_hadoop-net)
+Name: 172.21.0.4:9866 (taller-hadoop-datanode2-1.taller-hadoop_hadoop-net)
+Name: 172.21.0.5:9866 (taller-hadoop-datanode3-1.taller-hadoop_hadoop-net)
+Status: HEALTHY
+ Number of data-nodes:	3
+ Total blocks (validated):	32 (avg. block size 996655 B)
+ Under-replicated blocks:	0 (0.0 %)
+ Mis-replicated blocks:		0 (0.0 %)
+ Average block replication:	2.0
+ Missing blocks:		0
+ Corrupt blocks:		0
+[18:42:23] Ubicación de los 3 primeros bloques de /taller/input/logs/access.log:
+0. BP-2053535640-172.21.0.2-1794353431409:blk_1073741833_1009 len=1048576 Live_repl=2  [172.21.0.3, 172.21.0.4]
+1. BP-2053535640-172.21.0.2-1794353431409:blk_1073741834_1010 len=1048576 Live_repl=2  [172.21.0.4, 172.21.0.3]
+2. BP-2053535640-172.21.0.2-1794353431409:blk_1073741835_1011 len=1048576 Live_repl=2  [172.21.0.5, 172.21.0.3]
+[18:42:26] Checksum antes del fallo:
+/taller/input/logs/access.log	MD5-of-2048MD5-of-512CRC32C	0000020000000000000008007588dd9787b3529de622399a945175cf
+[18:42:28] === APAGANDO datanode1 ===
+ Container taller-hadoop-datanode1-1 Stopping 
+ Container taller-hadoop-datanode1-1 Stopped 
+[18:42:29] Inmediatamente después (el NameNode aún no lo sabe):
+	Under replicated blocks: 0
+	Missing blocks: 0
+[18:44:02] El NameNode ya reporta 1 DataNode(s) muerto(s) tras 89 s
+	Under replicated blocks: 0
+	Missing blocks: 0
+	Missing blocks (with replication factor 1): 0
+Live datanodes (2):
+Name: 172.21.0.4:9866 (taller-hadoop-datanode2-1.taller-hadoop_hadoop-net)
+Name: 172.21.0.5:9866 (taller-hadoop-datanode3-1.taller-hadoop_hadoop-net)
+Dead datanodes (1):
+Name: 172.21.0.3:9866 (172.21.0.3)
+[18:44:06] fsck justo al detectar el nodo muerto:
+Status: HEALTHY
+ Number of data-nodes:	2
+ Total blocks (validated):	32 (avg. block size 996655 B)
+ Under-replicated blocks:	20 (62.5 %)
+ Mis-replicated blocks:		0 (0.0 %)
+ Average block replication:	1.375
+ Missing blocks:		0
+ Corrupt blocks:		0
+[18:44:08] Lectura del archivo con un nodo menos:
+200000
+[18:44:11] Esperando la re-replicación (HDFS copia las réplicas perdidas a los nodos vivos)...
+[18:44:31] Re-replicación completa en 20 s
+Status: HEALTHY
+ Number of data-nodes:	2
+ Total blocks (validated):	32 (avg. block size 996655 B)
+ Under-replicated blocks:	0 (0.0 %)
+ Mis-replicated blocks:		0 (0.0 %)
+ Average block replication:	2.0
+ Missing blocks:		0
+ Corrupt blocks:		0
+0. BP-2053535640-172.21.0.2-1794353431409:blk_1073741833_1009 len=1048576 Live_repl=2  [172.21.0.4, 172.21.0.5]
+1. BP-2053535640-172.21.0.2-1794353431409:blk_1073741834_1010 len=1048576 Live_repl=2  [172.21.0.4, 172.21.0.5]
+2. BP-2053535640-172.21.0.2-1794353431409:blk_1073741835_1011 len=1048576 Live_repl=2  [172.21.0.5, 172.21.0.4]
+[18:44:36] Checksum después del fallo (debe ser idéntico):
+/taller/input/logs/access.log	MD5-of-2048MD5-of-512CRC32C	0000020000000000000008007588dd9787b3529de622399a945175cf
+[18:44:38] === RECUPERANDO datanode1 ===
+ Container taller-hadoop-namenode-1 Waiting 
+ Container taller-hadoop-namenode-1 Healthy 
+ Container taller-hadoop-datanode1-1 Starting 
+ Container taller-hadoop-datanode1-1 Started 
+[18:44:48] El nodo volvió. Sus réplicas antiguas ahora sobran (over-replicated) y el NameNode borra el exceso:
+	Under replicated blocks: 0
+	Missing blocks: 0
+	Missing blocks (with replication factor 1): 0
+Live datanodes (3):
+Name: 172.21.0.3:9866 (taller-hadoop-datanode1-1.taller-hadoop_hadoop-net)
+Name: 172.21.0.4:9866 (taller-hadoop-datanode2-1.taller-hadoop_hadoop-net)
+Name: 172.21.0.5:9866 (taller-hadoop-datanode3-1.taller-hadoop_hadoop-net)
+Status: HEALTHY
+ Number of data-nodes:	3
+ Total blocks (validated):	32 (avg. block size 996655 B)
+ Under-replicated blocks:	0 (0.0 %)
+ Mis-replicated blocks:		0 (0.0 %)
+ Average block replication:	2.0
+ Missing blocks:		0
+ Corrupt blocks:		0

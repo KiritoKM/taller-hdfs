@@ -1,0 +1,13 @@
+2026-11-10 23:47:11,028 WARN hdfs.DataStreamer: Exception in createBlockOutputStream blk_1073742225_1401
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(Unknown Source)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:205)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:614)
+	at org.apache.hadoop.hdfs.DataStreamer.createSocketForPipeline(DataStreamer.java:256)
+	at org.apache.hadoop.hdfs.DataStreamer.createBlockOutputStream(DataStreamer.java:1894)
+	at org.apache.hadoop.hdfs.DataStreamer.setupPipelineForCreate(DataStreamer.java:1842)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:752)
+2026-11-10 23:47:11,031 WARN hdfs.DataStreamer: Error Recovery for BP-2053535640-172.21.0.2-1794353431409:blk_1073742225_1401 in pipeline [DatanodeInfoWithStorage[172.21.0.4:9866,DS-7c2acffd-c463-4886-9d68-c772be8fa3b1,DISK], DatanodeInfoWithStorage[172.21.0.3:9866,DS-ac076c6f-e2f6-459f-91af-a3b72a45e37c,DISK]]: datanode 0(DatanodeInfoWithStorage[172.21.0.4:9866,DS-7c2acffd-c463-4886-9d68-c772be8fa3b1,DISK]) is bad.
+2026-11-10 23:47:11,031 WARN hdfs.DataStreamer: Abandoning BP-2053535640-172.21.0.2-1794353431409:blk_1073742225_1401
+2026-11-10 23:47:11,046 WARN hdfs.DataStreamer: Excluding datanode DatanodeInfoWithStorage[172.21.0.4:9866,DS-7c2acffd-c463-4886-9d68-c772be8fa3b1,DISK]
